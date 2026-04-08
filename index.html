@@ -1,20 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Plumbing Boca Raton Pros | 24/7 Emergency Plumbing</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0f1e;
+  color: #fff;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+header span {
+  color: #22c55e;
+}
+
+/* Hero Section */
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0a0f1e 0%, #1a2335 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #cbd5e1;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+}
+
+.btn.secondary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Sections */
+.section {
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+.section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #22c55e;
+  border-radius: 2px;
+}
+
+/* Rating Badge */
+.rating-badge {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 30px;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 20px auto;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.rating-badge .stars {
+  font-size: 48px;
+  color: #facc15;
+  margin-bottom: 10px;
+}
+
+.rating-badge .score {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Service Cards Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 30px 20px;
+  border-radius: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.service-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* Swipeable Reviews */
+.reviews-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 20px;
+  padding: 20px 20px 30px 20px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.review-card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  transition: transform 0.3s;
+}
+
+@media (min-width: 768px) {
+  .review-card {
+    flex: 0 0 45%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .review-card {
+    flex: 0 0 30%;
+  }
+}
+
+.review-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+.review-stars {
+  font-size: 22px;
+  margin: 10px 0;
+  color: #facc15;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 15px;
+}
+
+.review-text {
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* Form */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 40px;
+  border-radius: 24px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #2d3a4e;
+  color: white;
+  transition: all 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  background: #3a4a62;
+  box-shadow: 0 0 0 2px #22c55e;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+}
+
+button.btn {
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Map */
+.map-container {
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+}
+
+/* Sticky Call Button */
+.sticky-call {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  padding: 16px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sticky-call:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background: #020617;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.scroll-hint {
+  text-align: center;
+  font-size: 14px;
+  color: #22c55e;
+  margin-bottom: 20px;
+}
+</style>
 </head>
 <body>
-    <h1>Coming Soon</h1>
-    <p>My website is under construction.</p>
+
+<header>
+🔧 <span>Plumbing Boca Raton Pros</span>
+</header>
+
+<section class="hero">
+  <h1>24/7 Emergency Plumbing<br>In Boca Raton</h1>
+  <p>Fast • Reliable • Affordable • Licensed & Insured</p>
+  <a class="btn" href="tel:15614187689">📞 Call Now (561) 418-7689</a>
+  <a class="btn secondary" href="sms:15614187689">💬 Text Us</a>
+</section>
+
+<section class="section">
+  <div class="rating-badge">
+    <div class="stars">★★★★★</div>
+    <div class="score">5.0 Rating</div>
+    <p>Based on 35+ verified reviews</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🚰</div><h3>Leak Detection</h3><p>Fast & accurate leak repairs</p></div>
+    <div class="service-card"><div class="service-icon">🚿</div><h3>Faucet Installation</h3><p>Sinks, faucets & fixtures</p></div>
+    <div class="service-card"><div class="service-icon">🛠</div><h3>Pipe Repair</h3><p>Full pipe replacement & repair</p></div>
+    <div class="service-card"><div class="service-icon">🗑</div><h3>Garbage Disposal</h3><p>Repair or replace</p></div>
+    <div class="service-card"><div class="service-icon">🚽</div><h3>Toilet Repair</h3><p>Running toilets & clogs</p></div>
+    <div class="service-card"><div class="service-icon">🚨</div><h3>24/7 Emergency</h3><p>We answer anytime</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>⭐ What Our Customers Say</h2>
+  <p class="scroll-hint">👆 Swipe left or right →</p>
+  <div class="reviews-container">
+    <div class="review-card"><div class="review-name">Gloria Erika</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">1 month ago</div><div class="review-text">"The kitchen faucet handle was loose. Their experts replaced it and tightened everything securely. They checked for leaks and now it works perfectly."</div></div>
+    <div class="review-card"><div class="review-name">Fleming Krystal</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">1 month ago</div><div class="review-text">"The bathroom sink pipe was misaligned and leaking. Their team adjusted and secured the fittings properly. No more leaks at all!"</div></div>
+    <div class="review-card"><div class="review-name">Pollard Ryan</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">1 month ago</div><div class="review-text">"Our toilet kept running nonstop. They figured it out fast and replaced the bad part. Simple fix but done properly."</div></div>
+    <div class="review-card"><div class="review-name">Elijah Thompson</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">1 month ago</div><div class="review-text">"Clogged kitchen sink. Their team cleared the drain quickly. Water flows perfectly now. Very happy with the service."</div></div>
+    <div class="review-card"><div class="review-name">Rodrigo Froilan</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">5 months ago</div><div class="review-text">"Replaced my garbage disposal cleanly. The plumber was courteous and effective. Now it's operating flawlessly. I'm thrilled."</div></div>
+    <div class="review-card"><div class="review-name">Quinn Leonard</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">4 months ago</div><div class="review-text">"Strange rumbling noise after showers. The plumber traced it to air trapped in the line and flushed it. Noise disappeared completely."</div></div>
+    <div class="review-card"><div class="review-name">Lucas Brooks</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">6 months ago</div><div class="review-text">"Trenchless sewer replacement with minimal disruption. The tech knew exactly what he was doing. Very impressed."</div></div>
+    <div class="review-card"><div class="review-name">Skylar Hadassah</div><div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-date">1 month ago</div><div class="review-text">"Kitchen pipes shook during use. Their specialists secured the fittings and added support. Problem solved quickly. Reasonable price."</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Recent Work</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=500" alt="Plumber working">
+    <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500" alt="Faucet repair">
+    <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=500" alt="Water heater">
+    <img src="https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?w=500" alt="Pipe repair">
+  </div>
+</section>
+
+<section class="section">
+  <h2>Free Estimate</h2>
+  <div class="form-container">
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <textarea rows="3" placeholder="Describe your plumbing issue..."></textarea>
+      <button class="btn" type="submit">Send Request</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Visit Us</h2>
+  <p><strong>📍 7165 Beracasa Way Unit D, Boca Raton, FL 33433</strong></p>
+  <p>⏰ Open 24/7 | 📞 (561) 418-7689</p>
+  <div class="map-container">
+    <iframe src="https://maps.google.com/maps?q=7165+Beracasa+Way+Unit+D+Boca+Raton+FL+33433&output=embed"></iframe>
+  </div>
+</section>
+
+<a class="sticky-call" href="tel:15614187689">
+  📞 Call Now
+</a>
+
+<footer>
+  <p>© 2026 Plumbing Boca Raton Pros Services</p>
+  <p>Licensed & Insured | 24/7 Emergency Plumbing</p>
+</footer>
+
 </body>
 </html>
